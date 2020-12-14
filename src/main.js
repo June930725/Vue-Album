@@ -25,7 +25,9 @@ Vue.use(VueSweetalert2)
 Vue.component('ImgInputer', ImgInputer)
 Vue.use(Photoswipe)
 Vue.use(VueGtag, {
-  config: process.env.VUE_APP_GA
+  config: {
+    id: process.env.VUE_APP_GA
+  }
 })
 
 new Vue({
