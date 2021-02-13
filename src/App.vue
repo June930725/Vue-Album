@@ -1,11 +1,12 @@
 <template lang="pug">
   div#app
-    b-navbar(toggleable='lg' type='dark' variant='info')
+    b-navbar(toggleable='lg' type='dark' style='background: #20B2AA;')
       b-container
-        b-navbar-brand(to='/') 線上相簿
+        b-navbar-brand(to='/')
+          img(src='./assets/logo-01.png' height="40")
         b-navbar-toggle(target='nav-collapse')
         b-collapse#nav-collapse(is-nav)
-          b-navbar-nav.ml-auto
+          b-navbar-nav.ml-auto(style="color: #fff; ")
             b-nav-item(v-if="user.id.length === 0" to='/login') 登入
             b-nav-item(v-if="user.id.length === 0" to='/reg') 註冊
             b-nav-item(v-if="user.id.length > 0" to='/album') 我的相簿

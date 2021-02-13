@@ -1,8 +1,8 @@
 <template lang="pug">
   #reg
-    b-container.mt-3
-      b-row
-        b-col(cols="12")
+    b-container.mt-4
+      b-row(class="justify-content-center")
+        b-col(cols="8" lg="6")
           b-form(@submit.prevent="onSubmit" @reset="onReset")
             b-form-group#input-group-1(
               label="帳號"

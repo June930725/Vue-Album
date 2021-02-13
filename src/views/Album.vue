@@ -1,44 +1,46 @@
 <template lang="pug">
   #album
-    b-container
-      b-row.mt-3
-        b-col(cols="12")
-          h1.text-center 我的相簿
+    b-container.mt-4
+      b-row(class="justify-content-center")
+        b-col(cols="8" md="12")
+          img.mb-4(src='../assets/logo-05.png' width="45%" style="display:block; margin:auto;")
           b-form(@submit.prevent="onSubmit")
-            b-form-group#input-group-1(
-              label="圖片說明"
-              label-for="input-1"
-              :state="descState"
-              description="最多200個字"
-              invalid-feedback="格式不符"
-            )
-              b-form-textarea#input-1(
-                v-model="description"
-                type="text"
-                placeholder="請輸入相片說明"
-                :state="descState"
-              )
-            img-inputer.mx-auto(
-              v-model="image"
-              placeholder="請選擇圖片"
-              bottom-text="點擊或拖曳更換圖片"
-              :max-size="1024"
-              exceedSizeText="檔案大小不能超過"
-              accept="image/*"
-            )
-            br
-            br
-            b-btn(type="submit" variant="success") 送出
-      hr
+            b-row(class="justify-content-center")
+              b-col(cols="12" md="6")
+                b-row
+                  b-col(cols="12" md="6")
+                    b-form-group#input-group-1(
+                    :state="descState"
+                    description="最多200個字"
+                    invalid-feedback="格式不符"
+                  )
+                      b-form-textarea#input-1(
+                        style='height: 150px; width: 260px;'
+                        v-model="description"
+                        type="text"
+                        placeholder="請輸入相片說明"
+                        :state="descState"
+                      )
+                  b-col(cols="12" md="6")
+                    img-inputer.mx-auto(
+                      v-model="image"
+                      placeholder="請選擇圖片"
+                      bottom-text="點擊或拖曳更換圖片"
+                      :max-size="1024"
+                      exceedSizeText="檔案大小不能超過"
+                      accept="image/*"
+                    )
+                b-btn.mt-2(type="submit" variant="success") 送出
+          hr
       Photoswipe
-        b-row
-          b-col(cols="12" md="60" lg="3" v-for="(image, idx) in images" :key="image._id")
-            b-card
+        b-row(class="justify-content-center")
+          b-col.px-2(cols="8" md="6" lg="3" v-for="(image, idx) in images" :key="image._id")
+            b-card.mb-2
               b-card-img(:src="image.src" v-pswp="image")
-              b-card-body
-                b-btn(v-if="image.edit" variant="danger" @click="cancel(image)") 取消
+              b-card-body.px-0
+                b-btn.mr-2(v-if="image.edit" variant="danger" @click="cancel(image)") 取消
                 b-btn(v-if="image.edit" variant="success" @click="save(image)") 保存
-                b-btn(v-if="!image.edit" variant="danger" @click="edit(image)") 編輯
+                b-btn.mr-2(v-if="!image.edit" variant="danger" @click="edit(image)") 編輯
                 b-btn(v-if="!image.edit" variant="success" @click="del(image, idx)") 刪除
                 hr
                 b-form-textarea(v-if="image.edit" v-model="image.model")
