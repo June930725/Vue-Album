@@ -10,7 +10,7 @@ const albumSchema = new Schema(
     },
     description: {
       type: String,
-      required: [200, '說明必須低於200字']
+      maxlength: [200, '說明必須 200 字以下']
     },
     file: {
       type: String,
